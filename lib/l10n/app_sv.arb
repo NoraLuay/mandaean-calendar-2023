@@ -1,3 +1,6 @@
 {
-    "appTitle": "Mandaean kalender"
+    "appTitle": "Mandaean kalender",
+    "notification": "Notifikation",
+    "language": "Språk",
+    "about": "Om"
 }

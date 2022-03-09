@@ -1,6 +1,6 @@
   {
     "appTitle": "Mandaean Calendar",
-    "@appTitle": {
-      "description": "App title"
-    }
+    "notification": "Notification",
+    "language": "Language",
+    "about": "About"
   }

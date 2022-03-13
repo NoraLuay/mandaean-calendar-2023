@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DrawerButton extends StatelessWidget {
+class ButtonWithIcon extends StatelessWidget {
   
   final String name;
   final onPress;
   final assetImage;
 
-  const DrawerButton(this.name, this.assetImage, this.onPress);
+  const ButtonWithIcon(this.name, this.assetImage, this.onPress);
 
   @override
   Widget build(BuildContext context) {

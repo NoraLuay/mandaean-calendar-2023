@@ -2,5 +2,7 @@
     "appTitle": "Mandaean Calendar",
     "notification": "Notification",
     "language": "Language",
-    "about": "About"
+    "about": "About",
+    "chooseLanguage": "Choose Language",
+    "close": "Close"
   }

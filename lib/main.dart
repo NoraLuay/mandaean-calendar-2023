@@ -72,6 +72,7 @@ class _MyHomePage extends State<MyHomePage> {
             ButtonWithIcon(AppLocalizations.of(context)!.about,
                 const AssetImage("assets/images/ic_menu_about.png"), () {
               Navigator.pop(context);
+              _showAboutDialog(context);
             }),
           ])),
     );
@@ -90,24 +91,45 @@ Future<void> _showLanguageSelectionDialog(BuildContext context) async {
             children: <Widget>[
               ButtonWithIcon(constants.english,
                   const AssetImage("assets/images/english.png"), () async {
-                await updateLocale(const Locale('en'), context);
-              }),
+                    await updateLocale(const Locale('en'), context);
+                  }),
               ButtonWithIcon(constants.swedish,
                   const AssetImage("assets/images/sweden.png"), () async {
-                await updateLocale(const Locale('sv'), context);
-              }),
+                    await updateLocale(const Locale('sv'), context);
+                  }),
               ButtonWithIcon(constants.danish,
                   const AssetImage("assets/images/denmark.png"), () async {
-                await updateLocale(const Locale('dk'), context);
-              }),
+                    await updateLocale(const Locale('da'), context);
+                  }),
               ButtonWithIcon(
                   constants.arabic, const AssetImage("assets/images/iraq.png"),
-                  () async {
-                await updateLocale(const Locale('ar'), context);
-              }),
+                      () async {
+                    await updateLocale(const Locale('ar'), context);
+                  }),
             ],
           ),
         ),
+      );
+    },
+  );
+}
+
+Future<void> _showAboutDialog(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(AppLocalizations.of(context)!.about),
+        content: Text(AppLocalizations.of(context)!.aboutDescription),
+        actions: <Widget>[
+          TextButton(
+            child: Text(AppLocalizations.of(context)!.close),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       );
     },
   );

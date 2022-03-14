@@ -5,5 +5,10 @@
     "about": "About",
     "chooseLanguage": "Choose Language",
     "close": "Close",
-    "aboutDescription": "Thank you for using the Mandaean Calendar!\n\nThe calendar has all occasions for year 2022, each with a special color indicator depends on the occasion.\nPressing on a colored date will show additional information about the occasions.\n\nI hope this calendar comes in handy, as it is my main goal to achieve.\n\nIf you have any questions, suggestions, or anything else, don't hesitate to contact me.\n\nArshad Fendi & Noora Al-Sadawi\narshad.fendi@gmail.com"
+    "aboutDescription": "Thank you for using the Mandaean Calendar!\n\nThe calendar has all occasions for year 2022, each with a special color indicator depends on the occasion.\nPressing on a colored date will show additional information about the occasions.\n\nI hope this calendar comes in handy, as it is my main goal to achieve.\n\nIf you have any questions, suggestions, or anything else, don't hesitate to contact me.\n\nArshad Fendi & Noora Al-Sadawi\narshad.fendi@gmail.com",
+    "colorsDescription": "Colors description",
+    "religiousOccasion": "Religious occasion",
+    "beginningOfTheMonth": "Beginning of the month",
+    "lightDayOfFasting": "Light day of fasting",
+    "heavyDayOfFasting": "Heavy day of fasting"
   }

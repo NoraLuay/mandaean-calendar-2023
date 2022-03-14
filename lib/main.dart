@@ -5,6 +5,8 @@ import 'package:mandaean_calendar_2022/Constants.dart' as constants;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'date_legend.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -74,6 +76,19 @@ class _MyHomePage extends State<MyHomePage> {
               Navigator.pop(context);
               _showAboutDialog(context);
             }),
+            const SizedBox(height: 24.0),
+            Text(AppLocalizations.of(context)!.colorsDescription, style: const TextStyle(fontSize: 16.0)),
+                  const Divider(
+                      color: Colors.black,
+                      height: 12,
+                      thickness: 1,
+                      indent: 0,
+                      endIndent: 0,
+                  ),
+                  DateLegend(AppLocalizations.of(context)!.religiousOccasion, 0xFF14C815),
+                  DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, 0xFF3264FF),
+                  DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, 0xFFFFC800),
+                  DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, 0xFFFF0000),
           ])),
     );
   }
@@ -91,21 +106,21 @@ Future<void> _showLanguageSelectionDialog(BuildContext context) async {
             children: <Widget>[
               ButtonWithIcon(constants.english,
                   const AssetImage("assets/images/english.png"), () async {
-                    await updateLocale(const Locale('en'), context);
-                  }),
+                await updateLocale(const Locale('en'), context);
+              }),
               ButtonWithIcon(constants.swedish,
                   const AssetImage("assets/images/sweden.png"), () async {
-                    await updateLocale(const Locale('sv'), context);
-                  }),
+                await updateLocale(const Locale('sv'), context);
+              }),
               ButtonWithIcon(constants.danish,
                   const AssetImage("assets/images/denmark.png"), () async {
-                    await updateLocale(const Locale('da'), context);
-                  }),
+                await updateLocale(const Locale('da'), context);
+              }),
               ButtonWithIcon(
                   constants.arabic, const AssetImage("assets/images/iraq.png"),
-                      () async {
-                    await updateLocale(const Locale('ar'), context);
-                  }),
+                  () async {
+                await updateLocale(const Locale('ar'), context);
+              }),
             ],
           ),
         ),

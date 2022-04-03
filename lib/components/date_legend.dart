@@ -18,13 +18,13 @@ class DateLegend extends StatelessWidget {
                             width: 20.0,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    width: 1, color: Color(0xFF4788C7)),
+                                    width: 1, color: const Color(0xFF4788C7)),
                                 color: Color(hexColor),
                             ),
                         ),
-                        SizedBox(width: 12.0),
+                        const SizedBox(width: 12.0),
                         Text(name,
-                            style: TextStyle(fontSize: 16.0)),
+                            style: const TextStyle(fontSize: 16.0)),
                     ]
                 ),
             ],

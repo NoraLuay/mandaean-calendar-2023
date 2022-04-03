@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mandaean_calendar_2022/ButtonWithIcon.dart';
+import 'package:mandaean_calendar_2022/components/ButtonWithIcon.dart';
 import 'package:mandaean_calendar_2022/Constants.dart' as constants;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'date_legend.dart';
+import 'constants.dart';
+import 'components/date_legend.dart';
 
 void main() {
   runApp(MyApp());
@@ -85,10 +86,10 @@ class _MyHomePage extends State<MyHomePage> {
                       indent: 0,
                       endIndent: 0,
                   ),
-                  DateLegend(AppLocalizations.of(context)!.religiousOccasion, 0xFF14C815),
-                  DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, 0xFF3264FF),
-                  DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, 0xFFFFC800),
-                  DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, 0xFFFF0000),
+                  DateLegend(AppLocalizations.of(context)!.religiousOccasion, colorReligiousOccasion),
+                  DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, colorBeginningOfTheMonth),
+                  DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, colorLightDayOfFasting),
+                  DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting),
           ])),
     );
   }
@@ -132,7 +133,7 @@ Future<void> _showLanguageSelectionDialog(BuildContext context) async {
 Future<void> _showAboutDialog(BuildContext context) {
   return showDialog<void>(
     context: context,
-    barrierDismissible: false, // user must tap button!
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(AppLocalizations.of(context)!.about),

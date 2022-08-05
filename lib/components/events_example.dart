@@ -8,15 +8,21 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../utils.dart';
 
+
 class TableEventsExample extends StatefulWidget {
+    final Map<DateTime, List<Event>> calendarEvents;
+  const TableEventsExample({required this.calendarEvents});
+
   @override
-  _TableEventsExampleState createState() => _TableEventsExampleState();
+  _TableEventsExampleState createState() => _TableEventsExampleState(calendarEvents);
 }
 
 class _TableEventsExampleState extends State<TableEventsExample> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
+  final Map<DateTime, List<Event>> calendarEvents;
+  _TableEventsExampleState(this.calendarEvents);
 
   @override
   void initState() {
@@ -33,8 +39,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   }
 
   List<Event> _getEventsForDay(DateTime day) {
-    // Implementation example
-    return kEvents[day] ?? [];
+    return events[day] ?? [];
   }
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {

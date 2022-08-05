@@ -16,13 +16,4 @@ class Event {
   String toString() => title;
 }
 
-final kEvents = {
-  DateTime.utc(2022, 8, 6): [
-    const Event(Color(0xFFFFC800), 'Today\'s Event 1'),
-    const Event(Color(0xFF14C815), 'Today\'s Event 2'),
-  ]
-};
-
-final kToday = DateTime.now();
-final kFirstDay = DateTime(kToday.year, kToday.month, kToday.day);
-final kLastDay = DateTime(kToday.year, kToday.month, kToday.day);
+final events = {};

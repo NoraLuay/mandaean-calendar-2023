@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mandaean_calendar_2022/components/ButtonWithIcon.dart';
 import 'package:mandaean_calendar_2022/Constants.dart' as constants;
 import 'package:get/get.dart';
+import 'package:mandaean_calendar_2022/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'components/events_example.dart';
@@ -57,6 +58,10 @@ class _MyHomePage extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+      Map<DateTime, List<Event>> calendarEvents = loadCalendarEvents(context);
+      events.clear();
+      events.addAll(calendarEvents);
+      
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
@@ -93,7 +98,7 @@ class _MyHomePage extends State<MyHomePage> {
                   DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting),
           ])),
         // body: MyTableCalendar(calendarEvents()),
-        body: TableEventsExample(),
+        body: TableEventsExample(calendarEvents: calendarEvents),
     );
   }
 }
@@ -163,86 +168,249 @@ Future<void> updateLocale(Locale locale, BuildContext context) async {
   Navigator.pop(context);
 }
 
-List calendarEvents() {
-    final _selectedDay = DateTime.now();
+Map<DateTime, List<Event>> loadCalendarEvents(BuildContext context) {
+  final eve = {
+    // Jan
+    DateTime.utc(2022, 1, 6): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 1, 14): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_01)
+    ],
 
-    Map<DateTime, List> _events = {
-        // Jan
-        
-        
-        DateTime(2022, 1,  6): [{Color(0xFFFFC800): "aaa" }],
-        // DateTime(2022, 1, 14): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_01")}],
-        //
-        // // Feb
-        // DateTime(2022, 2, 13): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_02")}],
-        //
-        // // Mar
-        // DateTime(2022, 3,  9): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 3, 10): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 3, 11): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 3, 12): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 3, 13): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 3, 14): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_banja_day_1")}],
-        // DateTime(2022, 3, 15): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_banja_day_2")}],
-        // DateTime(2022, 3, 16): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_banja_day_3")}],
-        // DateTime(2022, 3, 17): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_banja_day_4")}],
-        // DateTime(2022, 3, 18): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_banja_day_5")}],
-        // DateTime(2022, 3, 19): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_03")}, {Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        //
-        // // Apr
-        // DateTime(2022, 4, 18): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_04")}],
-        //
-        // // May
-        // DateTime(2022, 5, 18): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_dehbaAdDemana")}, {Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_05")}],
-        // DateTime(2022, 5, 19): [{Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        //
-        // // Jun
-        // DateTime(2022, 6, 17): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_06")}],
-        //
-        // // Jul
-        // DateTime(2022, 7, 14): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 15): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 16): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_kenshiWeZehli")}],
-        // DateTime(2022, 7, 17): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_dehbaAdRaba_1")}, {Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_07")}, {Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 18): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_dehbaAdRaba_2")}, {Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 19): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 20): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 21): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 22): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_aiedShoshian_1")}, {Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 7, 23): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_aiedShoshian_2")}, {Color(0xFFFF0000): AppLocalizations.of(context).translate("calendar_heavy_fasting")}],
-        // DateTime(2022, 7, 24): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 25): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 26): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 27): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 28): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 29): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 30): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 7, 31): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_yomIlTihare")}],
-        //
-        // // Aug
-        // DateTime(2022, 8,  7): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 8, 16): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_08")}],
-        //
-        // // Sep
-        // DateTime(2022, 9,  9): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 9, 15): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_09")}],
-        //
-        // // Oct
-        // DateTime(2022, 10, 15): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_degIlFil")}, {Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_10")}, {Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 10, 16): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 10, 17): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 10, 18): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        //
-        // // Nov
-        // DateTime(2022, 11,  1): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_dehbaAdHanena")}],
-        // DateTime(2022, 11, 14): [{Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_11")}],
-        //
-        // // Dec
-        // DateTime(2022, 12, 14): [{Color(0xFF14C815): AppLocalizations.of(context).translate("calendar_event_abuAlhiris")}, {Color(0xFF3264FF): AppLocalizations.of(context).translate("calendar_beginning_of_month_12")}],
-        // DateTime(2022, 12, 22): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-        // DateTime(2022, 12, 28): [{Color(0xFFFFC800): AppLocalizations.of(context).translate("calendar_light_fasting")}],
-    };
-    
-    return _events[DateTime(_selectedDay.year, _selectedDay.month, _selectedDay.day)] ?? [];
-    
+    // Feb
+    DateTime.utc(2022, 2, 13): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_02)
+    ],
+
+    // Mar
+    DateTime.utc(2022, 3, 9): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 3, 10): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 3, 11): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 3, 12): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 3, 13): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+
+    DateTime.utc(2022, 3, 14): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_banja_day_1)
+    ],
+    DateTime.utc(2022, 3, 15): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_banja_day_2)
+    ],
+    DateTime.utc(2022, 3, 16): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_banja_day_3)
+    ],
+    DateTime.utc(2022, 3, 17): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_banja_day_4)
+    ],
+    DateTime.utc(2022, 3, 18): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_banja_day_5)
+    ],
+    DateTime.utc(2022, 3, 19): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_03),
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+
+    // Apr
+    DateTime.utc(2022, 4, 18): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_04)
+    ],
+
+    // May
+    DateTime.utc(2022, 5, 18): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_dehbaAdDemana),
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_05)
+    ],
+    DateTime.utc(2022, 5, 19): [
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+
+    // Jun
+    DateTime.utc(2022, 6, 17): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_06)
+    ],
+
+    // Jul
+    DateTime.utc(2022, 7, 14): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 15): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 16): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_kenshiWeZehli)
+    ],
+    DateTime.utc(2022, 7, 17): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_1),
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_07),
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 18): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_2),
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 19): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 20): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 21): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 22): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_aiedShoshian_1),
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 23): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_aiedShoshian_2),
+      Event(const Color(0xFFFF0000),
+          AppLocalizations.of(context)!.heavyDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 24): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 25): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 26): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 27): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 28): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 29): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 30): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 7, 31): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_yomIlTihare)
+    ],
+
+    // Aug
+    DateTime.utc(2022, 8, 7): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 8, 16): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_08)
+    ],
+
+    // Sep
+    DateTime.utc(2022, 9, 9): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 9, 15): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_09)
+    ],
+
+    // Oct
+    DateTime.utc(2022, 10, 15): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_degIlFil),
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_10),
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 10, 16): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 10, 17): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 10, 18): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+
+    // Nov
+    DateTime.utc(2022, 11, 1): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_dehbaAdHanena)
+    ],
+    DateTime.utc(2022, 11, 14): [
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_11)
+    ],
+
+    // Dec
+    DateTime.utc(2022, 12, 14): [
+      Event(const Color(0xFF14C815),
+          AppLocalizations.of(context)!.calendar_event_yomIlTihare),
+      Event(const Color(0xFF3264FF),
+          AppLocalizations.of(context)!.calendar_beginning_of_month_12)
+    ],
+    DateTime.utc(2022, 12, 22): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+    DateTime.utc(2022, 12, 28): [
+      Event(const Color(0xFFFFC800),
+          AppLocalizations.of(context)!.lightDayOfFasting)
+    ],
+  };
+
+  return eve;
 }

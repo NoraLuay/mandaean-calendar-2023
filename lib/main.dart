@@ -98,7 +98,7 @@ class _MyHomePage extends State<MyHomePage> {
                   DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting),
           ])),
         // body: MyTableCalendar(calendarEvents()),
-        body: TableEventsExample(calendarEvents: calendarEvents),
+        body: const TableEventsExample(),
     );
   }
 }

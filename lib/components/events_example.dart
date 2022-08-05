@@ -10,19 +10,17 @@ import '../utils.dart';
 
 
 class TableEventsExample extends StatefulWidget {
-    final Map<DateTime, List<Event>> calendarEvents;
-  const TableEventsExample({required this.calendarEvents});
+  const TableEventsExample();
 
   @override
-  _TableEventsExampleState createState() => _TableEventsExampleState(calendarEvents);
+  _TableEventsExampleState createState() => _TableEventsExampleState();
 }
 
 class _TableEventsExampleState extends State<TableEventsExample> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-  final Map<DateTime, List<Event>> calendarEvents;
-  _TableEventsExampleState(this.calendarEvents);
+  _TableEventsExampleState();
 
   @override
   void initState() {

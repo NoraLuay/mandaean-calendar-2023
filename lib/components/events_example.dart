@@ -8,7 +8,6 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../utils.dart';
 
-
 class TableEventsExample extends StatefulWidget {
   const TableEventsExample();
 
@@ -20,6 +19,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
+
   _TableEventsExampleState();
 
   @override
@@ -57,60 +57,66 @@ class _TableEventsExampleState extends State<TableEventsExample> {
       body: Column(
         children: [
           TableCalendar<Event>(
-              locale: Localizations.localeOf(context).toString(),
+            locale: Localizations.localeOf(context).toString(),
             startingDayOfWeek: StartingDayOfWeek.monday,
             firstDay: DateTime.utc(2022, 1, 1),
             lastDay: DateTime.utc(2022, 12, 31),
             focusedDay: _focusedDay,
             selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-              availableCalendarFormats: const {
-                  CalendarFormat.month: '',
-              },
-              calendarStyle: const CalendarStyle(
-                  // Weekend dates color (Sat & Sun Column)
-                  weekendTextStyle: TextStyle(color: Color(0xFFFF0000)),
-                  // highlighted color for today
-                  todayDecoration: BoxDecoration(
-                      color: Color(0x800064FF),
-                      shape: BoxShape.rectangle,
-                  ),
-                  // highlighted color for selected day
-                  selectedDecoration: BoxDecoration(
-                      color: Color(0xFF0064FF),
-                      shape: BoxShape.rectangle,
-                  ),
-                  outsideDaysVisible: false,
+            availableCalendarFormats: const {
+              CalendarFormat.month: '',
+            },
+            calendarStyle: const CalendarStyle(
+              // Weekend dates color (Sat & Sun Column)
+              weekendTextStyle: TextStyle(color: Color(0xFFFF0000)),
+              // highlighted color for today
+              todayDecoration: BoxDecoration(
+                color: Color(0x800064FF),
+                shape: BoxShape.rectangle,
               ),
-              headerStyle: const HeaderStyle(
-                  titleCentered: true,
-                  formatButtonVisible: false,
+              // highlighted color for selected day
+              selectedDecoration: BoxDecoration(
+                color: Color(0xFF0064FF),
+                shape: BoxShape.rectangle,
               ),
-            calendarBuilders: CalendarBuilders(
-                markerBuilder: (context, date, events) {
-                    final children = <Widget>[];
-                    if (events.isNotEmpty) {
-                        for (var eve in events) {
-                            children.add(
-                                Container(
-                                    height: 12.0,
-                                    width: 12.0,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1, color: const Color(0xFF4788C7)),
-                                        color: eve.color,
-                                    ),
-                                ),
-                            );
-                        }
-                    }
-                    
-                    return Row(
-                        children: children
-                    );
-                },
+              outsideDaysVisible: false,
             ),
-              eventLoader: _getEventsForDay,
+            headerStyle: const HeaderStyle(
+              titleCentered: true,
+              formatButtonVisible: false,
+            ),
+            calendarBuilders: CalendarBuilders(
+              markerBuilder: (context, date, events) {
+                final children = <Widget>[];
+                if (events.isNotEmpty) {
+                  for (var eve in events) {
+                    children.add(
+                      Container(
+                        height: 12.0,
+                        width: 12.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1, color: const Color(0xFF4788C7)),
+                          color: eve.color,
+                        ),
+                      ),
+                    );
+                  }
+                }
+
+                return Row(children: children);
+              },
+            ),
+            eventLoader: _getEventsForDay,
             onDaySelected: _onDaySelected,
+            onPageChanged: (focusedDay) {
+              _focusedDay = focusedDay;
+              if (_selectedDay == focusedDay) {
+                _selectedEvents.value = _getEventsForDay(_selectedDay!);
+              } else {
+                _selectedEvents.value = [];
+              }
+            },
           ),
           const SizedBox(height: 8.0),
           Expanded(

@@ -1,5 +1,10 @@
 const String languageKey = "LanguageKey";
 
+const String religiousOccasionKey = "religiousOccasionKey";
+const String beginningOfTheMonthKey = "beginningOfTheMonthKey";
+const String lightDayOfFastingKey = "lightDayOfFastingKey";
+const String heavyDayOfFastingKey = "heavyDayOfFastingKey";
+
 const String english = "English";
 const String swedish = "Svenska";
 const String danish = "Dansk";

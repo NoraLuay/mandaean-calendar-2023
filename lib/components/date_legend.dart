@@ -1,12 +1,80 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DateLegend extends StatelessWidget {
+import '../constants.dart';
+
+class DateLegend extends StatefulWidget {
     final String name;
     final int hexColor;
+    Function(bool isSwitched) callBack;
     
-    const DateLegend(this.name, this.hexColor);
+    DateLegend(this.name, this.hexColor, this.callBack, {Key? key})
+        : super(key: key);
+
+    @override
+    _DateLegend createState() =>
+        _DateLegend(this.name, this.hexColor, callBack);
+}
+
+class _DateLegend extends State<DateLegend> {
+    
+    bool isSwitched = false;
+    
+    String name;
+    int hexColor;
+    Function(bool isSwitched) callBack;
+    
+    _DateLegend(this.name, this.hexColor, this.callBack);
     
     @override
+  void initState() {
+    super.initState();
+    loadEventToggle(context);
+  }
+
+    void _onChanged(bool value) {
+        setState(() {
+            isSwitched = value;
+            callBack(value);
+        });
+    }
+
+  Future<void> loadEventToggle(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    switch (hexColor) {
+      case colorReligiousOccasion:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(religiousOccasionKey) ?? false;
+          });
+        }
+        break;
+      case colorBeginningOfTheMonth:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(beginningOfTheMonthKey) ?? false;
+          });
+        }
+        break;
+      case colorLightDayOfFasting:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(lightDayOfFastingKey) ?? false;
+          });
+        }
+        break;
+      case colorHeavyDayOfFasting:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(heavyDayOfFastingKey) ?? false;
+          });
+        }
+        break;
+    }
+  }
+
+  @override
     Widget build(BuildContext context) {
         return ListView(
             shrinkWrap: true,
@@ -25,6 +93,13 @@ class DateLegend extends StatelessWidget {
                         const SizedBox(width: 12.0),
                         Text(name,
                             style: const TextStyle(fontSize: 16.0)),
+                        const SizedBox(width: 5.0),
+                        Switch(
+                            value: isSwitched,
+                            onChanged: (value) {
+                                _onChanged(value);
+                            },
+                        ),
                     ]
                 ),
             ],

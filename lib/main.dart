@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mandaean_calendar_2022/components/ButtonWithIcon.dart';
-import 'package:mandaean_calendar_2022/Constants.dart' as constants;
 import 'package:get/get.dart';
 import 'package:mandaean_calendar_2022/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +45,7 @@ class _MyHomePage extends State<MyHomePage> {
   void _loadLocale() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      var languageCode = prefs.getString(constants.languageKey);
+      var languageCode = prefs.getString(languageKey);
       if (languageCode != null) {
         Get.updateLocale(Locale(languageCode));
       } else {
@@ -58,10 +57,7 @@ class _MyHomePage extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-      Map<DateTime, List<Event>> calendarEvents = loadCalendarEvents(context);
-      events.clear();
-      events.addAll(calendarEvents);
-      
+      loadCalendarEvents(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
@@ -92,10 +88,30 @@ class _MyHomePage extends State<MyHomePage> {
                       indent: 0,
                       endIndent: 0,
                   ),
-                  DateLegend(AppLocalizations.of(context)!.religiousOccasion, colorReligiousOccasion),
-                  DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, colorBeginningOfTheMonth),
-                  DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, colorLightDayOfFasting),
-                  DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting),
+                  DateLegend(AppLocalizations.of(context)!.religiousOccasion, colorReligiousOccasion, (isSwitched) {
+                      saveEventToggle(religiousOccasionKey, isSwitched);
+                      setState(() {
+                          loadCalendarEvents(context);
+                      });
+                  }),
+                  DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, colorBeginningOfTheMonth, (isSwitched) {
+                      saveEventToggle(beginningOfTheMonthKey, isSwitched);
+                      setState(() {
+                          loadCalendarEvents(context);
+                      });
+                  }),
+                  DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, colorLightDayOfFasting, (isSwitched) {
+                      saveEventToggle(lightDayOfFastingKey, isSwitched);
+                      setState(() {
+                          loadCalendarEvents(context);
+                      });
+                  }),
+                  DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting, (isSwitched) {
+                      saveEventToggle(heavyDayOfFastingKey, isSwitched);
+                      setState(() {
+                          loadCalendarEvents(context);
+                      });
+                  }),
           ])),
         // body: MyTableCalendar(calendarEvents()),
         body: const TableEventsExample(),
@@ -113,21 +129,20 @@ Future<void> _showLanguageSelectionDialog(BuildContext context) async {
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              ButtonWithIcon(constants.english,
+              ButtonWithIcon(english,
                   const AssetImage("assets/images/english.png"), () async {
                 await updateLocale(const Locale('en'), context);
               }),
-              ButtonWithIcon(constants.swedish,
+              ButtonWithIcon(swedish,
                   const AssetImage("assets/images/sweden.png"), () async {
                 await updateLocale(const Locale('sv'), context);
               }),
-              ButtonWithIcon(constants.danish,
+              ButtonWithIcon(danish,
                   const AssetImage("assets/images/denmark.png"), () async {
                 await updateLocale(const Locale('da'), context);
               }),
               ButtonWithIcon(
-                  constants.arabic, const AssetImage("assets/images/iraq.png"),
-                  () async {
+                  arabic, const AssetImage("assets/images/iraq.png"), () async {
                 await updateLocale(const Locale('ar'), context);
               }),
             ],
@@ -160,21 +175,29 @@ Future<void> _showAboutDialog(BuildContext context) {
 }
 
 Future<void> updateLocale(Locale locale, BuildContext context) async {
-  Get.updateLocale(locale);
-
-  final prefs = await SharedPreferences.getInstance();
-  prefs.setString(constants.languageKey, locale.languageCode);
-
-  Navigator.pop(context);
+    Get.updateLocale(locale);
+    
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(languageKey, locale.languageCode);
+    
+    Navigator.pop(context);
 }
 
-Map<DateTime, List<Event>> loadCalendarEvents(BuildContext context) {
-    bool showReligiousOccasion = true;
-    bool showBeginningOfMonth = true;
-    bool showLightDayOfFasting = true;
-    bool showHeavyDayOfFasting = true;
+Future<void> saveEventToggle(String eventKey, bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool(eventKey, value);
+}
+
+Future<void> loadCalendarEvents(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    bool showReligiousOccasion = prefs.getBool(religiousOccasionKey) ?? false;
+    bool showBeginningOfMonth = prefs.getBool(beginningOfTheMonthKey) ?? false;
+    bool showLightDayOfFasting = prefs.getBool(lightDayOfFastingKey) ?? false;
+    bool showHeavyDayOfFasting = prefs.getBool(heavyDayOfFastingKey) ?? false;
     
-  final eve = {
+    events.clear();
+    
+  final eventsInternal = {
     // Jan
     DateTime.utc(2022, 1, 6): [
       Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
@@ -417,5 +440,5 @@ Map<DateTime, List<Event>> loadCalendarEvents(BuildContext context) {
     ],
   };
 
-  return eve;
+    events.addAll(eventsInternal);
 }

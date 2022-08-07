@@ -90,17 +90,19 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                 final children = <Widget>[];
                 if (events.isNotEmpty) {
                   for (var eve in events) {
-                    children.add(
-                      Container(
-                        height: 12.0,
-                        width: 12.0,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 1, color: const Color(0xFF4788C7)),
-                          color: eve.color,
+                    if (eve.display) {
+                      children.add(
+                        Container(
+                          height: 12.0,
+                          width: 12.0,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 1, color: const Color(0xFF4788C7)),
+                            color: eve.color,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
                   }
                 }
 
@@ -126,20 +128,24 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                 return ListView.builder(
                   itemCount: value.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 12.0,
-                        vertical: 4.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: ListTile(
-                        onTap: () => print('wtf ${value[index]}'),
-                        title: Text(value[index].title),
-                      ),
-                    );
+                      if(value[index].display) {
+                          return Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 4.0,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: ListTile(
+                                  onTap: () => print('wtf ${value[index]}'),
+                                  title: Text(value[index].title),
+                              ),
+                          );
+                      } else {
+                          return const SizedBox.shrink();
+                      }
                   },
                 );
               },

@@ -112,6 +112,12 @@ class _MyHomePage extends State<MyHomePage> {
                           loadCalendarEvents(context);
                       });
                   }),
+                  DateLegend(AppLocalizations.of(context)!.peopleOfInterests, colorPeopleOfInterest, (isSwitched) {
+                      saveEventToggle(peopleOfInterestKey, isSwitched);
+                      setState(() {
+                          loadCalendarEvents(context);
+                      });
+                  }),
           ])),
         // body: MyTableCalendar(calendarEvents()),
         body: const TableEventsExample(),
@@ -194,251 +200,252 @@ Future<void> loadCalendarEvents(BuildContext context) async {
     bool showBeginningOfMonth = prefs.getBool(beginningOfTheMonthKey) ?? false;
     bool showLightDayOfFasting = prefs.getBool(lightDayOfFastingKey) ?? false;
     bool showHeavyDayOfFasting = prefs.getBool(heavyDayOfFastingKey) ?? false;
+    bool showPeopleOfInterest = prefs.getBool(peopleOfInterestKey) ?? false;
     
     events.clear();
+
+    final eventsInternal = {
+        // Jan
+        DateTime.utc(2022, 1, 6): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 1, 14): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_01)
+        ],
     
-  final eventsInternal = {
-    // Jan
-    DateTime.utc(2022, 1, 6): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 1, 14): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_01)
-    ],
-
-    // Feb
-    DateTime.utc(2022, 2, 13): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_02)
-    ],
-
-    // Mar
-    DateTime.utc(2022, 3, 9): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 3, 10): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 3, 11): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 3, 12): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 3, 13): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-
-    DateTime.utc(2022, 3, 14): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_banja_day_1)
-    ],
-    DateTime.utc(2022, 3, 15): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_banja_day_2)
-    ],
-    DateTime.utc(2022, 3, 16): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_banja_day_3)
-    ],
-    DateTime.utc(2022, 3, 17): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_banja_day_4)
-    ],
-    DateTime.utc(2022, 3, 18): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_banja_day_5)
-    ],
-    DateTime.utc(2022, 3, 19): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_03),
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-
-    // Apr
-    DateTime.utc(2022, 4, 18): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_04)
-    ],
-
-    // May
-    DateTime.utc(2022, 5, 18): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_dehbaAdDemana),
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_05)
-    ],
-    DateTime.utc(2022, 5, 19): [
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-
-    // Jun
-    DateTime.utc(2022, 6, 17): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_06)
-    ],
-
-    // Jul
-    DateTime.utc(2022, 7, 14): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 15): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 16): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_kenshiWeZehli)
-    ],
-    DateTime.utc(2022, 7, 17): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_1),
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_07),
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 18): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_2),
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 19): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 20): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 21): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 22): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_aiedShoshian_1),
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 23): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_aiedShoshian_2),
-      Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-          AppLocalizations.of(context)!.heavyDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 24): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 25): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 26): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 27): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 28): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 29): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 30): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 7, 31): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_yomIlTihare)
-    ],
-
-    // Aug
-    DateTime.utc(2022, 8, 7): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 8, 16): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_08)
-    ],
-
-    // Sep
-    DateTime.utc(2022, 9, 9): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 9, 15): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_09)
-    ],
-
-    // Oct
-    DateTime.utc(2022, 10, 15): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_degIlFil),
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_10),
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 10, 16): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 10, 17): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 10, 18): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-
-    // Nov
-    DateTime.utc(2022, 11, 1): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_dehbaAdHanena)
-    ],
-    DateTime.utc(2022, 11, 14): [
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_11)
-    ],
-
-    // Dec
-    DateTime.utc(2022, 12, 14): [
-      Event(showReligiousOccasion, const Color(colorReligiousOccasion),
-          AppLocalizations.of(context)!.calendar_event_yomIlTihare),
-      Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-          AppLocalizations.of(context)!.calendar_beginning_of_month_12)
-    ],
-    DateTime.utc(2022, 12, 22): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-    DateTime.utc(2022, 12, 28): [
-      Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
-          AppLocalizations.of(context)!.lightDayOfFasting)
-    ],
-  };
+        // Feb
+        DateTime.utc(2022, 2, 13): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_02)
+        ],
+    
+        // Mar
+        DateTime.utc(2022, 3, 9): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 3, 10): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 3, 11): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 3, 12): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 3, 13): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+    
+        DateTime.utc(2022, 3, 14): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_banja_day_1)
+        ],
+        DateTime.utc(2022, 3, 15): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_banja_day_2)
+        ],
+        DateTime.utc(2022, 3, 16): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_banja_day_3)
+        ],
+        DateTime.utc(2022, 3, 17): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_banja_day_4)
+        ],
+        DateTime.utc(2022, 3, 18): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_banja_day_5)
+        ],
+        DateTime.utc(2022, 3, 19): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_03),
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+    
+        // Apr
+        DateTime.utc(2022, 4, 18): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_04)
+        ],
+    
+        // May
+        DateTime.utc(2022, 5, 18): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_dehbaAdDemana),
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_05)
+        ],
+        DateTime.utc(2022, 5, 19): [
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+    
+        // Jun
+        DateTime.utc(2022, 6, 17): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_06)
+        ],
+    
+        // Jul
+        DateTime.utc(2022, 7, 14): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 15): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 16): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_kenshiWeZehli)
+        ],
+        DateTime.utc(2022, 7, 17): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_1),
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_07),
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 18): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_dehbaAdRaba_2),
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 19): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 20): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 21): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 22): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_aiedShoshian_1),
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 7, 23): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_aiedShoshian_2),
+            Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
+                AppLocalizations.of(context)!.calendar_heavy_fasting)
+        ],
+        DateTime.utc(2022, 7, 24): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 25): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 26): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 27): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 28): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 29): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 30): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 7, 31): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_yomIlTihare)
+        ],
+    
+        // Aug
+        DateTime.utc(2022, 8, 7): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 8, 16): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_08)
+        ],
+    
+        // Sep
+        DateTime.utc(2022, 9, 9): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 9, 15): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_09)
+        ],
+    
+        // Oct
+        DateTime.utc(2022, 10, 15): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_degIlFil),
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_10),
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 10, 16): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 10, 17): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 10, 18): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+    
+        // Nov
+        DateTime.utc(2022, 11, 1): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_dehbaAdHanena)
+        ],
+        DateTime.utc(2022, 11, 14): [
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_11)
+        ],
+    
+        // Dec
+        DateTime.utc(2022, 12, 14): [
+            Event(showReligiousOccasion, const Color(colorReligiousOccasion),
+                AppLocalizations.of(context)!.calendar_event_yomIlTihare),
+            Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
+                AppLocalizations.of(context)!.calendar_beginning_of_month_12)
+        ],
+        DateTime.utc(2022, 12, 22): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+        DateTime.utc(2022, 12, 28): [
+            Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
+                AppLocalizations.of(context)!.calendar_light_fasting)
+        ],
+    };
 
     events.addAll(eventsInternal);
 }

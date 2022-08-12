@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../constants.dart';
 import '../utils.dart';
 
 class TableEventsExample extends StatefulWidget {
@@ -97,7 +98,8 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                           width: 12.0,
                           decoration: BoxDecoration(
                             border: Border.all(
-                                width: 1, color: const Color(0xFF4788C7)),
+                                width: 1,
+                                color: const Color(colorEventBorder)),
                             color: eve.color,
                           ),
                         ),
@@ -106,7 +108,9 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                   }
                 }
 
-                return Row(children: children);
+                return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children);
               },
             ),
             eventLoader: _getEventsForDay,
@@ -135,7 +139,10 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                                   vertical: 4.0,
                               ),
                               decoration: BoxDecoration(
-                                  border: Border.all(),
+                                  border: Border.all(
+                                      color: value[index].color,
+                                      width: 2,
+                                  ),
                                   borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: ListTile(

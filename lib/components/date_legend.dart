@@ -86,14 +86,14 @@ class _DateLegend extends State<DateLegend> {
                             width: 20.0,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    width: 1, color: const Color(0xFF4788C7)),
+                                    width: 1, color:
+                                    const Color(colorEventBorder)),
                                 color: Color(hexColor),
                             ),
                         ),
                         const SizedBox(width: 12.0),
-                        Text(name,
-                            style: const TextStyle(fontSize: 16.0)),
-                        const SizedBox(width: 5.0),
+                        Expanded(child: Text(name,
+                            style: const TextStyle(fontSize: 16.0))),
                         Switch(
                             value: isSwitched,
                             onChanged: (value) {

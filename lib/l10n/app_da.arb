@@ -11,7 +11,7 @@
   "beginningOfTheMonth": "Begyndelsen af måneden",
   "lightDayOfFasting": "Let fastedag",
   "heavyDayOfFasting": "Tung fastedag",
-  "peopleOfInterests": "DA_People of interest",
+  "peopleOfInterests": "Vigtige mennesker",
   "comment_calendar_events_1": "=========== Events in calendar ===========",
   "calendar_event_banja_day_1": "Benja (pronaya) fest: Dag 1",
   "calendar_event_banja_day_2": "Benja (pronaya) fest: Dag 2",
@@ -43,5 +43,13 @@
   "calendar_beginning_of_month_12": "Første Mandaeske Tammuz",
   "comment_calendar_events_3": "=======================================",
   "calendar_heavy_fasting": "Tung fastedag",
-  "calendar_light_fasting": "Let fastedag"
+  "calendar_light_fasting": "Let fastedag",
+  "comment_calendar_events_4": "=======================================",
+  "calendar_people_of_interests_01": "Digteren Lamia Abbas Emara Al-Mandawi\nFødt: 1929, Bagdad\nDød: 2021-01-18, Californien, USA\nMilwasha: Mamani Beth-Mahnash",
+  "calendar_people_of_interests_02": "Resh-ima Abdullah kanzbara Najim kanzbara Zahron resh-ima Abdullah\nFødt: 1927-01-07\nDød: 2010-03-04\nMilwasha: Ram Yehana Ber-Simet",
+  "calendar_people_of_interests_03": "Leder af Imma (tidligere sektleder) Sheik Dakhil Sheik Idan Sheik Damuk Al-Mandawi\nFødt: 1867 Amara\nDød: 1964-06-24 Bagdad\nMilwasha: Muhtam Zahran Ber-Yasmin",
+  "calendar_people_of_interests_04": "Den lærde Abdul Jabbar Sheik Abdullah Sheik Sam Al-Mandawi\nFødt: 1911 Maysan\nDød: 1969-07-09 New York, USA\nMilwasha: ----",
+  "calendar_people_of_interests_05": "Digteren Abd al-Razzaq Abd al-Wahed Ghayyad al-Mandawi\nFødt: 1930-03-20 Bagdad\nDød: 2016-11-18 Paris\nMilwasha: Yahia Ber-Sharat-Simet",
+  "calendar_people_of_interests_06": "Al-Ganzura Sheik Jabbar Tawoos Sheik Saad Al-Kahili\nFødt: 1921\nDød: 2014-12-28\nMilwasha: Amhatam Yehanan Ber-Shart",
+  "calendar_people_of_interests_07": "Sheik Abdullah Sheikh Sam Shabout Al-Mandawi (tidligere sektleder)\nFødt: 1890 Amara\nDød: 1981\nMilwasha: Adam Zahrun Bar-Chart"
 }

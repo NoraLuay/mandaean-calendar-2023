@@ -11,7 +11,7 @@
   "beginningOfTheMonth": "Beginning of the month",
   "lightDayOfFasting": "Light day of fasting",
   "heavyDayOfFasting": "Heavy day of fasting",
-  "peopleOfInterests": "People of interest",
+  "peopleOfInterests": "Important people",
   "comment_calendar_events_1": "=========== Events in calendar ===========",
   "calendar_event_banja_day_1": "Benja (pronaya) feast: Day 1",
   "calendar_event_banja_day_2": "Benja (pronaya) feast: Day 2",
@@ -43,5 +43,13 @@
   "calendar_beginning_of_month_12": "First of Mandaic Tammuz",
   "comment_calendar_events_3": "=======================================",
   "calendar_heavy_fasting": "Heavy day of fasting",
-  "calendar_light_fasting": "Light day of fasting"
+  "calendar_light_fasting": "Light day of fasting",
+  "comment_calendar_events_4": "=======================================",
+  "calendar_people_of_interests_01": "Poet Lamia Abbas Emara Al-Mandawi\nBorn: 1929, Baghdad\nDied: 01/18/2021, California, USA\nMilwasha: Mamani Beth-Mahnash",
+  "calendar_people_of_interests_02": "Resh-ima Abdullah kanzbara Najim kanzbara Zahron resh-ima Abdullah\nBorn: 07/01/1927\nDied: 03/04/2010\nMilwasha: Ram Yehana Ber-Simet",
+  "calendar_people_of_interests_03": "The head Imma (the former head of the sect) Sheikh Dakhil Sheikh Idan Sheikh Damuk Al-Mandawi\nBorn: 1867 Amara\nDied: 06/24/1964 Baghdad\nMilwasha: Muhtam Zahran Ber-Yasmin",
+  "calendar_people_of_interests_04": "The scholar Abdul Jabbar Sheikh Abdullah Sheikh Sam Al-Mandawi\nBorn: 1911 Maysan\nDied: 07/09/1969 New York, USA\nMilwasha: ----",
+  "calendar_people_of_interests_05": "The poet Abd al-Razzaq Abd al-Wahed Ghayyad al-Mandawi\nBorn: 3/20/1930 Baghdad\nDied: 11/18/2016 Paris\nMilwasha: Yahia Ber-Sharat-Simet",
+  "calendar_people_of_interests_06": "Al-Ganzura Sheikh Jabbar Tawoos Sheikh Saad Al-Kahili\nBorn: 1921\nDied: 12/28/2014\nMilwasha: Amhatam Yehanan Ber-Shart",
+  "calendar_people_of_interests_07": "Sheikh Abdullah Sheikh Sam Shabout Al-Mandawi (former head of the sect)\nBorn: 1890 Amara\nDied: 1981\nMilwasha: Adam Zahrun Bar-Chart"
 }

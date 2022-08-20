@@ -11,7 +11,7 @@
   "beginningOfTheMonth": "Början av månaden",
   "lightDayOfFasting": "Lätt fastedag",
   "heavyDayOfFasting": "Tung fastedag",
-  "peopleOfInterests": "SV_People of interest",
+  "peopleOfInterests": "Viktiga människor",
   "comment_calendar_events_1": "=========== Events in calendar ===========",
   "calendar_event_banja_day_1": "Benja (pronaya) högtid: Dag 1",
   "calendar_event_banja_day_2": "Benja (pronaya) högtid: Dag 2",
@@ -43,5 +43,13 @@
   "calendar_beginning_of_month_12": "Första Mandeiska Tammuz",
   "comment_calendar_events_3": "=======================================",
   "calendar_heavy_fasting": "Tung fastedag",
-  "calendar_light_fasting": "Lätt fastedag"
+  "calendar_light_fasting": "Lätt fastedag",
+  "comment_calendar_events_4": "=======================================",
+  "calendar_people_of_interests_01": "Poeten Lamia Abbas Emara Al-Mandawi\nFödd: 1929, Bagdad\nDöd: 2021-01-18, Kalifornien, USA\nMilwasha: Mamani Beth-Mahnash",
+  "calendar_people_of_interests_02": "Resh-ima Abdullah kanzbara Najim kanzbara Zahron resh-ima Abdullah\nFödelse: 1927-01-07\nDöd: 2010-03-04\nMilwasha: Ram Yehana Ber-Simet",
+  "calendar_people_of_interests_03": "Immas ledare (f.d. sektenledare) Sheikh Dakhil Sheikh Idan Sheikh Damuk Al-Mandawi\nFödelse: 1867 Amara\nDöd: 1964-06-24 Bagdad\nMilwasha: Muhtam Zahran Ber-Yasmin",
+  "calendar_people_of_interests_04": "Den lärde Abdul Jabbar Sheikh Abdullah Sheikh Sam Al-Mandawi\nFödd: 1911 Maysan\nDöd: 1969-07-09, New York, USA\nMilwasha: ----",
+  "calendar_people_of_interests_05": "Poeten Abd al-Razzaq Abd al-Wahed Ghayyad al-Mandawi\nFödd: 1930-03-20 Bagdad\nDöd: 2016-11-18 Paris\nMilwasha: Yahia Ber-Sharat-Simet",
+  "calendar_people_of_interests_06": "Al-Ganzura Sheikh Jabbar Tawoos Sheikh Saad Al-Kahili\nFödd: 1921\nDöd: 2014-12-28\nMilwasha: Amhatam Yehanan Ber-Shart",
+  "calendar_people_of_interests_07": "Sheikh Abdullah Sheikh Sam Shabout Al-Mandawi (f.d. sektledare)\nFödd: 1890 Amara\nDöd: 1981\nMilwasha: Adam Zahrun Bar-Chart"
 }

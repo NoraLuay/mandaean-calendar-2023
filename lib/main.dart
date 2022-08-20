@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Exploration',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(primarySwatch: Colors.blue),
@@ -34,6 +33,8 @@ class MyHomePage extends StatefulWidget {
     return _MyHomePage();
   }
 }
+
+var calendar = const TableEventsExample();
 
 class _MyHomePage extends State<MyHomePage> {
   @override
@@ -90,37 +91,27 @@ class _MyHomePage extends State<MyHomePage> {
                   ),
                   DateLegend(AppLocalizations.of(context)!.religiousOccasion, colorReligiousOccasion, (isSwitched) {
                       saveEventToggle(religiousOccasionKey, isSwitched);
-                      setState(() {
                           loadCalendarEvents(context);
-                      });
                   }),
                   DateLegend(AppLocalizations.of(context)!.beginningOfTheMonth, colorBeginningOfTheMonth, (isSwitched) {
                       saveEventToggle(beginningOfTheMonthKey, isSwitched);
-                      setState(() {
                           loadCalendarEvents(context);
-                      });
                   }),
                   DateLegend(AppLocalizations.of(context)!.lightDayOfFasting, colorLightDayOfFasting, (isSwitched) {
                       saveEventToggle(lightDayOfFastingKey, isSwitched);
-                      setState(() {
                           loadCalendarEvents(context);
-                      });
                   }),
                   DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting, colorHeavyDayOfFasting, (isSwitched) {
                       saveEventToggle(heavyDayOfFastingKey, isSwitched);
-                      setState(() {
                           loadCalendarEvents(context);
-                      });
                   }),
                   DateLegend(AppLocalizations.of(context)!.peopleOfInterests, colorPeopleOfInterest, (isSwitched) {
                       saveEventToggle(peopleOfInterestKey, isSwitched);
-                      setState(() {
                           loadCalendarEvents(context);
-                      });
                   }),
           ])),
         // body: MyTableCalendar(calendarEvents()),
-        body: const TableEventsExample(),
+        body: calendar,
     );
   }
 }
@@ -446,6 +437,7 @@ Future<void> loadCalendarEvents(BuildContext context) async {
                 AppLocalizations.of(context)!.calendar_light_fasting)
         ],
     };
-
+    
     events.addAll(eventsInternal);
+    calendar.refreshCalendar();
 }

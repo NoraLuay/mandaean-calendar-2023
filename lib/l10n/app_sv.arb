@@ -6,7 +6,7 @@
   "chooseLanguage": "Välj språk",
   "close": "Stäng",
   "aboutDescription": "Tack för att du använder Mandaéiska kalendern!\n\nKalenderen har alla event och högtider för år 2022, var och en med en särskild färgindikator beror på eventen.\nNär du klickar du på ett färgat daturm visas ytterligare information om eventet.\n\nJag hoppas att den här kalendern kommer att vara till nytta, eftersom det är mitt främsta mål att uppnå.\n\nOm du har några frågor, förslag eller något annat, tveka inte att kontakta mig.\n\nArshad Fendi & Noora Al-Sadawi\narshad.fendi@gmail.com",
-  "colorsExplanation": "Färgbeskrivning",
+  "eventFilterHeader": "Välja händelser som ska visas",
   "religiousOccasion": "Religiös högtid",
   "beginningOfTheMonth": "Början av månaden",
   "lightDayOfFasting": "Lätt fastedag",

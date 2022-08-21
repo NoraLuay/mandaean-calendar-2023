@@ -10,17 +10,19 @@ import 'constants.dart';
 import 'components/date_legend.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
     );
   }
 }
@@ -62,6 +64,7 @@ class _MyHomePage extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+          backgroundColor: primaryColor,
       ),
       drawer: Drawer(
           child: ListView(
@@ -81,7 +84,7 @@ class _MyHomePage extends State<MyHomePage> {
               _showAboutDialog(context);
             }),
             const SizedBox(height: 24.0),
-            Text(AppLocalizations.of(context)!.colorsDescription,
+            Text(AppLocalizations.of(context)!.eventFilterHeader,
                 style: const TextStyle(fontSize: 16.0)),
             const Divider(
               color: Colors.black,

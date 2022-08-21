@@ -20,3 +20,6 @@ const int colorHeavyDayOfFasting = 0xFFFF0000;
 const int colorPeopleOfInterest = 0xFFDC00FF;
 
 const int colorEventBorder = 0xFF4788C7;
+
+const primaryColor = Color(0xFF00C8FF);
+const secondaryColor = Color(0xFFDEEFFD);

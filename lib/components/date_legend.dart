@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mandaean_calendar_2022/util/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
@@ -81,30 +82,33 @@ class _DateLegend extends State<DateLegend> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: <Widget>[
-        Row(children: <Widget>[
-          Container(
-            height: 20.0,
-            width: 20.0,
-            decoration: BoxDecoration(
-              border:
-                  Border.all(width: 1, color: const Color(colorEventBorder)),
-              color: Color(hexColor),
+    return ScrollConfiguration(
+      behavior: MyScrollBehavior(),
+      child: ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          Row(children: <Widget>[
+            Container(
+              height: 20.0,
+              width: 20.0,
+              decoration: BoxDecoration(
+                border:
+                    Border.all(width: 1, color: const Color(colorEventBorder)),
+                color: Color(hexColor),
+              ),
             ),
-          ),
-          const SizedBox(width: 12.0),
-          Expanded(child: Text(name, style: const TextStyle(fontSize: 16.0))),
-          SizedBox(
-              height: 30,
-              child: Switch(
-                  value: isSwitched,
-                  onChanged: (value) {
-                    _onChanged(value);
-                  }))
-        ]),
-      ],
+            const SizedBox(width: 12.0),
+            Expanded(child: Text(name, style: const TextStyle(fontSize: 16.0))),
+            SizedBox(
+                height: 30,
+                child: Switch(
+                    value: isSwitched,
+                    onChanged: (value) {
+                      _onChanged(value);
+                    }))
+          ]),
+        ],
+      ),
     );
   }
 }

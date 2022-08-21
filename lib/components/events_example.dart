@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../constants.dart';
@@ -74,24 +75,31 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                 availableCalendarFormats: const {
                   CalendarFormat.month: '',
                 },
-                calendarStyle: const CalendarStyle(
+                calendarStyle: CalendarStyle(
                   // Weekend dates color (Sat & Sun Column)
-                  weekendTextStyle: TextStyle(color: Color(0xFFFF0000)),
+                  weekendTextStyle: const TextStyle(color: Color(0xFFFF0000)),
                   // highlighted color for today
                   todayDecoration: BoxDecoration(
-                    color: Color(0x800064FF),
+                    color: secondaryColor,
                     shape: BoxShape.rectangle,
+                      border: Border.all(
+                          width: 2,
+                          color: primaryColor),
                   ),
-                  // highlighted color for selected day
-                  selectedDecoration: BoxDecoration(
-                    color: Color(0xFF0064FF),
+                  todayTextStyle: const TextStyle(color: Colors.black),
+                  selectedTextStyle: const TextStyle(color: Colors.black),
+                  selectedDecoration: const BoxDecoration(
+                    color: primaryColor,
                     shape: BoxShape.rectangle,
                   ),
                   outsideDaysVisible: false,
                 ),
-                headerStyle: const HeaderStyle(
+                headerStyle: HeaderStyle(
                   titleCentered: true,
                   formatButtonVisible: false,
+                    titleTextFormatter: (date, locale) {
+                        return DateFormat.MMMM(locale).format(date);
+                    },
                 ),
                 calendarBuilders: CalendarBuilders(
                   markerBuilder: (context, date, events) {
@@ -157,7 +165,6 @@ class _TableEventsExampleState extends State<TableEventsExample> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: ListTile(
-                          onTap: () => print('wtf ${value[index]}'),
                           title: Text(value[index].title),
                         ),
                       );

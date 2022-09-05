@@ -45,35 +45,35 @@ class _DateLegend extends State<DateLegend> {
       case colorReligiousOccasion:
         {
           setState(() {
-            isSwitched = prefs.getBool(religiousOccasionKey) ?? false;
+            isSwitched = prefs.getBool(religiousOccasionKey) ?? true;
           });
         }
         break;
       case colorBeginningOfTheMonth:
         {
           setState(() {
-            isSwitched = prefs.getBool(beginningOfTheMonthKey) ?? false;
+            isSwitched = prefs.getBool(beginningOfTheMonthKey) ?? true;
           });
         }
         break;
       case colorLightDayOfFasting:
         {
           setState(() {
-            isSwitched = prefs.getBool(lightDayOfFastingKey) ?? false;
+            isSwitched = prefs.getBool(lightDayOfFastingKey) ?? true;
           });
         }
         break;
       case colorHeavyDayOfFasting:
         {
           setState(() {
-            isSwitched = prefs.getBool(heavyDayOfFastingKey) ?? false;
+            isSwitched = prefs.getBool(heavyDayOfFastingKey) ?? true;
           });
         }
         break;
       case colorPeopleOfInterest:
         {
           setState(() {
-            isSwitched = prefs.getBool(peopleOfInterestKey) ?? false;
+            isSwitched = prefs.getBool(peopleOfInterestKey) ?? true;
           });
         }
         break;

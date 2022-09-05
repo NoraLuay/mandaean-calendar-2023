@@ -1,4 +1,4 @@
-package com.example.mandaean_calendar_2022
+package com.twayesh.apps.mandaeancalendar
 
 import io.flutter.embedding.android.FlutterActivity
 

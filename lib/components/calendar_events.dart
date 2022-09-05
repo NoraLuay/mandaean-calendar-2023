@@ -15,8 +15,8 @@ List<Event> _getEventsForDay(DateTime day) {
   return events[day] ?? [];
 }
 
-class TableEventsExample extends StatefulWidget {
-  const TableEventsExample();
+class CalendarEvents extends StatefulWidget {
+  const CalendarEvents();
 
   void refreshCalendar() {
     _selectedEvents.value.clear();
@@ -24,13 +24,13 @@ class TableEventsExample extends StatefulWidget {
   }
 
   @override
-  _TableEventsExampleState createState() => _TableEventsExampleState();
+  _CalendarEventsState createState() => _CalendarEventsState();
 }
 
-class _TableEventsExampleState extends State<TableEventsExample> {
+class _CalendarEventsState extends State<CalendarEvents> {
   DateTime _focusedDay = DateTime.now();
 
-  _TableEventsExampleState();
+  _CalendarEventsState();
 
   @override
   void initState() {

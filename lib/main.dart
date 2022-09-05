@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:mandaean_calendar_2022/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'components/events_example.dart';
+import 'components/calendar_events.dart';
 import 'constants.dart';
 import 'components/date_legend.dart';
 
@@ -36,7 +36,7 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
-var calendar = const TableEventsExample();
+var calendar = const CalendarEvents();
 
 class _MyHomePage extends State<MyHomePage> {
   @override
@@ -199,11 +199,11 @@ Future<void> saveEventToggle(String eventKey, bool value) async {
 
 Future<void> loadCalendarEvents(BuildContext context) async {
   final prefs = await SharedPreferences.getInstance();
-  bool showReligiousOccasion = prefs.getBool(religiousOccasionKey) ?? false;
-  bool showBeginningOfMonth = prefs.getBool(beginningOfTheMonthKey) ?? false;
-  bool showLightDayOfFasting = prefs.getBool(lightDayOfFastingKey) ?? false;
-  bool showHeavyDayOfFasting = prefs.getBool(heavyDayOfFastingKey) ?? false;
-  bool showPeopleOfInterest = prefs.getBool(peopleOfInterestKey) ?? false;
+  bool showReligiousOccasion = prefs.getBool(religiousOccasionKey) ?? true;
+  bool showBeginningOfMonth = prefs.getBool(beginningOfTheMonthKey) ?? true;
+  bool showLightDayOfFasting = prefs.getBool(lightDayOfFastingKey) ?? true;
+  bool showHeavyDayOfFasting = prefs.getBool(heavyDayOfFastingKey) ?? true;
+  bool showPeopleOfInterest = prefs.getBool(peopleOfInterestKey) ?? true;
 
   events.clear();
 

@@ -68,8 +68,8 @@ class _CalendarEventsState extends State<CalendarEvents> {
               return TableCalendar<Event>(
                 locale: Localizations.localeOf(context).toString(),
                 startingDayOfWeek: StartingDayOfWeek.monday,
-                firstDay: DateTime.utc(2022, 1, 1),
-                lastDay: DateTime.utc(2022, 12, 31),
+                firstDay: DateTime.utc(2023, 1, 1),
+                lastDay: DateTime.utc(2023, 12, 31),
                 focusedDay: _focusedDay,
                 selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
                 availableCalendarFormats: const {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mandaean_calendar_2022/components/ButtonWithIcon.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,10 @@ import 'constants.dart';
 import 'components/date_legend.dart';
 
 void main() {
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+    ]).then((value) => runApp(const MyApp()));
   runApp(const MyApp());
 }
 

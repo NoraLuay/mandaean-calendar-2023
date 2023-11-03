@@ -162,6 +162,14 @@ Future<void> _showLanguageSelectionDialog(BuildContext context) async {
             ],
           ),
         ),
+        actions: <Widget>[
+          TextButton(
+            child: Text(AppLocalizations.of(context)!.close),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       );
     },
   );

@@ -19,7 +19,7 @@ class UpdateDialog {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(AppLocalizations.of(context)!.waring),
-            content: Text(AppLocalizations.of(context)!.waringDescription),
+            content: Text(AppLocalizations.of(context)!.newUpdateWarningDescription),
             actions: <Widget>[
               TextButton(
                 child: Text(AppLocalizations.of(context)!.update),

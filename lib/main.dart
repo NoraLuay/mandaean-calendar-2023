@@ -50,10 +50,9 @@ class _MyHomePage extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadLocale();
-    WidgetsBinding.instance!
-        .addPostFrameCallback((_) => {
-          UpdateDialog().showUpdateDialogIfAppNeedsUpdate(context)
-        });
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => UpdateDialog().showUpdateDialogIfAppNeedsUpdate(context)
+        );
   }
 
   void _loadLocale() async {

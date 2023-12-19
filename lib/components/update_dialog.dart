@@ -6,7 +6,7 @@ import 'dart:io' as io;
 
 class UpdateDialog {
   var appYear = 2023; // TODO change every year
-  Uri androidUrl = Uri.parse('https://play.google.com/store/');
+  Uri androidUrl = Uri.parse('https://play.google.com/store/apps/details?id=com.twayesh.apps.mandaeancalendar');
   Uri iOsUrl = Uri.parse('https://www.apple.com/se/app-store/');
 
   Future<void> showUpdateDialogIfAppNeedsUpdate(BuildContext context) async {

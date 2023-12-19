@@ -2,8 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:share/share.dart';
 
 import '../constants.dart';
 import '../utils.dart';
@@ -166,6 +168,17 @@ class _CalendarEventsState extends State<CalendarEvents> {
                         ),
                         child: ListTile(
                           title: Text(value[index].title),
+                          onLongPress: () {
+                            final Locale appLocale =
+                                Localizations.localeOf(context);
+                            initializeDateFormatting(appLocale.toString(), null)
+                                .then((_) => {
+                                      Share.share(
+                                          DateFormat.yMMMMd(appLocale.toString()).format(_selectedDay!) +
+                                          ":\n" +
+                                          value[index].title)
+                                    });
+                          },
                         ),
                       );
                     } else {

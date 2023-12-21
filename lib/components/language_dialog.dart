@@ -31,6 +31,11 @@ class LangaugeDialog {
                   await updateLocale(const Locale('da'), context);
                 }),
                 ButtonWithIcon(
+                    german, const AssetImage("assets/images/germany.png"),
+                        () async {
+                      await updateLocale(const Locale('de'), context);
+                    }),
+                ButtonWithIcon(
                     arabic, const AssetImage("assets/images/iraq.png"),
                     () async {
                   await updateLocale(const Locale('ar'), context);

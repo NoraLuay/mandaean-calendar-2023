@@ -13,10 +13,10 @@ import 'constants.dart';
 import 'components/date_legend.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-    ]).then((value) => runApp(const MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((value) => runApp(const MyApp()));
   runApp(const MyApp());
 }
 
@@ -50,9 +50,8 @@ class _MyHomePage extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadLocale();
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => UpdateDialog().showUpdateDialogIfAppNeedsUpdate(context)
-        );
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => UpdateDialog().showUpdateDialogIfAppNeedsUpdate(context));
   }
 
   void _loadLocale() async {
@@ -74,7 +73,7 @@ class _MyHomePage extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
-          backgroundColor: primaryColor,
+        backgroundColor: primaryColor,
       ),
       drawer: Drawer(
           child: ListView(
@@ -121,6 +120,16 @@ class _MyHomePage extends State<MyHomePage> {
             DateLegend(AppLocalizations.of(context)!.heavyDayOfFasting,
                 colorHeavyDayOfFasting, (isSwitched) {
               saveEventToggle(heavyDayOfFastingKey, isSwitched);
+              LoadCalendarEvents().loadCalendarEvents(context);
+            }),
+            DateLegend(AppLocalizations.of(context)!.predictionDay,
+                colorPredictionDay, (isSwitched) {
+              saveEventToggle(predictionDayKey, isSwitched);
+              LoadCalendarEvents().loadCalendarEvents(context);
+            }),
+            DateLegend(AppLocalizations.of(context)!.disappearanceOfMoon,
+                colorDisappearanceOfMoon, (isSwitched) {
+              saveEventToggle(disappearanceOfMoonKey, isSwitched);
               LoadCalendarEvents().loadCalendarEvents(context);
             }),
             DateLegend(AppLocalizations.of(context)!.peopleOfInterests,

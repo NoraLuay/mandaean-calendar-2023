@@ -8,7 +8,7 @@
   "update": "Updatera",
   "waring": "Varning",
   "newUpdateWarningDescription": "Du måste uppdatera kalendern till den senaste versionen.",
-  "aboutDescription": "Tack för att du använder Mandaéiska kalendern!\n\nKalenderen har alla event och högtider för år 2023, var och en med en särskild färgindikator beror på eventen.\nNär du klickar du på ett färgat daturm visas ytterligare information om eventet.\n\nKilde:\nRabbi Rafid Resh-ima Abdullah Al-Sabti\n\nJag hoppas att den här kalendern kommer att vara till nytta, eftersom det är mitt främsta mål att uppnå.\n\nOm du har några frågor, förslag eller något annat, tveka inte att kontakta mig.\n\nArshad Fendi & Noora Al-Sadawi\narshad.fendi@gmail.com",
+  "aboutDescription": "Tack för att du använder Mandaéiska kalendern!\n\nKalenderen har alla event och högtider för år 2024, var och en med en särskild färgindikator beror på eventen.\nNär du klickar du på ett färgat daturm visas ytterligare information om eventet.\n\nKilde:\nRabbi Rafid Resh-ima Abdullah Al-Sabti\n\nJag hoppas att den här kalendern kommer att vara till nytta, eftersom det är mitt främsta mål att uppnå.\n\nOm du har några frågor, förslag eller något annat, tveka inte att kontakta mig.\n\nArshad Fendi & Noora Al-Sadawi\narshad.fendi@gmail.com",
   "eventFilterHeader": "Välja händelser som ska visas",
   "religiousOccasion": "Religiös högtid",
   "beginningOfTheMonth": "Början av månaden",
@@ -54,5 +54,7 @@
   "calendar_people_of_interests_04": "Den lärde Abdul Jabbar Sheikh Abdullah Sheikh Sam Al-Mandawi\nFödd: 1911 Maysan\nDöd: 1969-07-09, New York, USA\nMilwasha: ----",
   "calendar_people_of_interests_05": "Poeten Abd al-Razzaq Abd al-Wahed Ghayyad al-Mandawi\nFödd: 1930-03-20 Bagdad\nDöd: 2016-11-18 Paris\nMilwasha: Yahia Ber-Sharat-Simet",
   "calendar_people_of_interests_06": "Al-Ganzura Sheikh Jabbar Tawoos Sheikh Saad Al-Kahili\nFödd: 1921\nDöd: 2014-12-28\nMilwasha: Amhatam Yehanan Ber-Shart",
-  "calendar_people_of_interests_07": "Sheikh Abdullah Sheikh Sam Shabout Al-Mandawi (f.d. sektledare)\nFödd: 1890 Amara\nDöd: 1981\nMilwasha: Adam Zahrun Bar-Chart"
+  "calendar_people_of_interests_07": "Sheikh Abdullah Sheikh Sam Shabout Al-Mandawi (f.d. sektledare)\nFödd: 1890 Amara\nDöd: 1981\nMilwasha: Adam Zahrun Bar-Chart",
+  "predictionDay": "Förutsägelse dag ",
+  "disappearanceOfMoon" : "Månens försvinnande"
 }

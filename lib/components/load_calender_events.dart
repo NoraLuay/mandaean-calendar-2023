@@ -16,6 +16,8 @@ class LoadCalendarEvents {
     bool showLightDayOfFasting = prefs.getBool(lightDayOfFastingKey) ?? true;
     bool showHeavyDayOfFasting = prefs.getBool(heavyDayOfFastingKey) ?? true;
     bool showPeopleOfInterest = prefs.getBool(peopleOfInterestKey) ?? true;
+    bool showPredictionDay = prefs.getBool(predictionDayKey) ?? true;
+    bool showDisappearanceOfMoon = prefs.getBool(disappearanceOfMoonKey) ?? true;
 
     events.clear();
 
@@ -35,6 +37,10 @@ class LoadCalendarEvents {
       ],
 
       // Feb
+      DateTime.utc(2024, 2, 10): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 2, 12): [
         Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
             AppLocalizations.of(context)!.calendar_beginning_of_month_02)
@@ -55,11 +61,15 @@ class LoadCalendarEvents {
       ],
       DateTime.utc(2024, 3, 10): [
         Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-            AppLocalizations.of(context)!.calendar_heavy_fasting)
+            AppLocalizations.of(context)!.calendar_heavy_fasting),
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
       ],
       DateTime.utc(2024, 3, 11): [
         Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
-            AppLocalizations.of(context)!.calendar_heavy_fasting)
+            AppLocalizations.of(context)!.calendar_heavy_fasting),
+        Event(showPredictionDay, const Color(colorPredictionDay),
+            AppLocalizations.of(context)!.predictionDay)
       ],
       DateTime.utc(2024, 3, 12): [
         Event(showHeavyDayOfFasting, const Color(colorHeavyDayOfFasting),
@@ -93,12 +103,24 @@ class LoadCalendarEvents {
       ],
 
       // Apr
+      DateTime.utc(2024, 4, 8): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
+      DateTime.utc(2024, 4, 10): [
+        Event(showPredictionDay, const Color(colorPredictionDay),
+            AppLocalizations.of(context)!.predictionDay)
+      ],
       DateTime.utc(2024, 4, 17): [
         Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
             AppLocalizations.of(context)!.calendar_beginning_of_month_04)
       ],
 
       // May
+      DateTime.utc(2024, 5, 8): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 5, 17): [
         Event(showReligiousOccasion, const Color(colorReligiousOccasion),
             AppLocalizations.of(context)!.calendar_event_dehbaAdDemana),
@@ -111,9 +133,19 @@ class LoadCalendarEvents {
       ],
 
       // Jun
+      DateTime.utc(2024, 6, 6): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
+      DateTime.utc(2024, 6, 15): [
+        Event(showPredictionDay, const Color(colorPredictionDay),
+            AppLocalizations.of(context)!.predictionDay)
+      ],
       DateTime.utc(2024, 6, 16): [
         Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
-            AppLocalizations.of(context)!.calendar_beginning_of_month_06)
+            AppLocalizations.of(context)!.calendar_beginning_of_month_06),
+        Event(showPredictionDay, const Color(colorPredictionDay),
+            AppLocalizations.of(context)!.predictionDay)
       ],
       DateTime.utc(2024, 6, 24): [
         Event(showPeopleOfInterest, const Color(colorPeopleOfInterest),
@@ -121,6 +153,10 @@ class LoadCalendarEvents {
       ],
 
       // Jul
+      DateTime.utc(2024, 7, 6): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 7, 9): [
         Event(showPeopleOfInterest, const Color(colorPeopleOfInterest),
             AppLocalizations.of(context)!.calendar_people_of_interests_04)
@@ -209,6 +245,10 @@ class LoadCalendarEvents {
       ],
 
       // Aug
+      DateTime.utc(2024, 8, 4): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 8, 6): [
         Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
             AppLocalizations.of(context)!.calendar_light_fasting)
@@ -219,6 +259,10 @@ class LoadCalendarEvents {
       ],
 
       // Sep
+      DateTime.utc(2024, 9, 3): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 9, 8): [
         Event(showLightDayOfFasting, const Color(colorLightDayOfFasting),
             AppLocalizations.of(context)!.calendar_light_fasting)
@@ -229,6 +273,10 @@ class LoadCalendarEvents {
       ],
 
       // Oct
+      DateTime.utc(2024, 10, 2): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 10, 14): [
         Event(showReligiousOccasion, const Color(colorReligiousOccasion),
             AppLocalizations.of(context)!.calendar_event_degIlFil),
@@ -255,6 +303,10 @@ class LoadCalendarEvents {
       ],
 
       // Nov
+      DateTime.utc(2024, 11, 1): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 11, 13): [
         Event(showBeginningOfMonth, const Color(colorBeginningOfTheMonth),
             AppLocalizations.of(context)!.calendar_beginning_of_month_11)
@@ -265,6 +317,10 @@ class LoadCalendarEvents {
       ],
 
       // Dec
+      DateTime.utc(2024, 12, 1): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
+      ],
       DateTime.utc(2024, 12, 13): [
         Event(showReligiousOccasion, const Color(colorReligiousOccasion),
             AppLocalizations.of(context)!.calendar_event_abuAlhiris),
@@ -280,6 +336,10 @@ class LoadCalendarEvents {
             AppLocalizations.of(context)!.calendar_light_fasting),
         Event(showPeopleOfInterest, const Color(colorPeopleOfInterest),
             AppLocalizations.of(context)!.calendar_people_of_interests_06)
+      ],
+      DateTime.utc(2024, 12, 30): [
+        Event(showDisappearanceOfMoon, const Color(colorDisappearanceOfMoon),
+            AppLocalizations.of(context)!.disappearanceOfMoon)
       ],
     };
 

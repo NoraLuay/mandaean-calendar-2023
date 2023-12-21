@@ -77,6 +77,20 @@ class _DateLegend extends State<DateLegend> {
           });
         }
         break;
+      case colorDisappearanceOfMoon:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(disappearanceOfMoonKey) ?? true;
+          });
+        }
+        break;
+      case colorPredictionDay:
+        {
+          setState(() {
+            isSwitched = prefs.getBool(predictionDayKey) ?? true;
+          });
+        }
+        break;
     }
   }
 

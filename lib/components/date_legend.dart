@@ -77,10 +77,10 @@ class _DateLegend extends State<DateLegend> {
           });
         }
         break;
-      case colorDisappearanceOfMoon:
+      case colorLunarEclipse:
         {
           setState(() {
-            isSwitched = prefs.getBool(disappearanceOfMoonKey) ?? true;
+            isSwitched = prefs.getBool(lunarEclipseKey) ?? true;
           });
         }
         break;

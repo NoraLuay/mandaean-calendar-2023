@@ -8,7 +8,7 @@ const String lightDayOfFastingKey = "lightDayOfFastingKey";
 const String heavyDayOfFastingKey = "heavyDayOfFastingKey";
 const String predictionDayKey = "predictionDayKey";
 const String peopleOfInterestKey = "peopleOfInterestKey";
-const String disappearanceOfMoonKey = "disappearanceOfMoonKey";
+const String lunarEclipseKey = "lunarEclipseKey";
 
 const String english = "English";
 const String swedish = "Svenska";
@@ -22,7 +22,7 @@ const int colorLightDayOfFasting = 0xFFFFC800;
 const int colorHeavyDayOfFasting = 0xFFFF0000;
 const int colorPredictionDay = 0xFFFF0001;
 const int colorPeopleOfInterest = 0xFFDC00FF;
-const int colorDisappearanceOfMoon = 0xFF757575;
+const int colorLunarEclipse = 0xFF757575;
 
 const int colorEventBorder = 0xFF4788C7;
 

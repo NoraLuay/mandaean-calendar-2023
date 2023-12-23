@@ -127,9 +127,9 @@ class _MyHomePage extends State<MyHomePage> {
               saveEventToggle(predictionDayKey, isSwitched);
               LoadCalendarEvents().loadCalendarEvents(context);
             }),
-            DateLegend(AppLocalizations.of(context)!.disappearanceOfMoon,
-                colorDisappearanceOfMoon, (isSwitched) {
-              saveEventToggle(disappearanceOfMoonKey, isSwitched);
+            DateLegend(AppLocalizations.of(context)!.lunarEclipse,
+                colorLunarEclipse, (isSwitched) {
+              saveEventToggle(lunarEclipseKey, isSwitched);
               LoadCalendarEvents().loadCalendarEvents(context);
             }),
             DateLegend(AppLocalizations.of(context)!.peopleOfInterests,
